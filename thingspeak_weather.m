@@ -34,13 +34,24 @@ humidity = humidity(valid_ind_hum);
 
 %% Visualize Data %%
 close all;
-figure('Name','Temperature','NumberTitle','off','OuterPosition',[400 560 560 420]);
-plot(time_temp, temp,'rd-');
+scrnsize = get( groot, 'Screensize' );
+wdth = 560;
+hght = 420;
+% Temperature
+spec_temp_lo = [18,18];
+spec_temp_hi = [22,22];
+figure('Name','Temperature','NumberTitle','off','OuterPosition',[scrnsize(3)/2-wdth scrnsize(4)*0.95-hght wdth hght]);
+plot(time_temp, temp,'gd-');hold on;
 a = get(gca);
+plot(a.XLim,spec_temp_lo,'r-',a.XLim,spec_temp_hi,'r-');hold off;
 % axis([a.XLim floor(a.YLim(1))-0.5 floor(a.YLim(2))+1]);
 title('Temperature (°C)');
-figure('Name','Humidity','NumberTitle','off','OuterPosition',[960 560 560 420]);
-plot(time_hum,humidity,'bo-');
+% Humidity
+spec_hum_lo = [40,40];
+spec_hum_hi = [60,60];
+figure('Name','Humidity','NumberTitle','off','OuterPosition',[scrnsize(3)/2 scrnsize(4)*0.95-hght wdth hght]);
+plot(time_hum,humidity,'bo-');hold on;
 a = get(gca);
+plot(a.XLim,spec_hum_lo,'r-',a.XLim,spec_hum_hi,'r-');hold off;
 % axis([a.XLim (floor(a.YLim(1)/3)-1)*3 (floor(a.YLim(2)/3)+1)*3]);
 title('Humidity (%rH)');
