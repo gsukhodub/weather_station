@@ -64,7 +64,7 @@ plot(a.XLim,spec_temp_lo,'r-',a.XLim,spec_temp_hi,'r-');
 legend(legend_temp,'Location','best');
 a = get(gca);
 ylim([0.98*a.YLim(1) 1.02*a.YLim(2)]);hold off;
-title('Temperature (°C)');
+title('Temperature ({\circ}C)');
 % Humidity
 spec_hum_lo = [40,40];
 spec_hum_hi = [60,60];
